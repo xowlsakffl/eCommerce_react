@@ -13,10 +13,10 @@ export default {
       colors: {
         customBlue: "rgba(28, 100, 242, 1)",
         banner: {
-          color1: "#D4B5A1",
-          color2: "#A38DBD",
-          color3: "#8FA6A0",
-          color4: "#C9C9FF",
+          color1: "#FDC200",
+          color2: "#FF2C2C",
+          color3: "#21AD61",
+          color4: "#723DA6",
         },
       },
       backgroundImage: {
