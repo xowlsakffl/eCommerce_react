@@ -4,7 +4,7 @@ import { errorReducer } from "./reducers/errorReducer";
 import { cartReducer } from "./reducers/cartReducer";
 
 const cartItems = localStorage.getItem("cartItems")
-    ? JSON.parse(localStorage.getItem("cartItem"))
+    ? JSON.parse(localStorage.getItem("cartItems"))
     : [];
 
 const initialState = {
@@ -20,4 +20,4 @@ export const store = configureStore({
     preloadedState: initialState,
 });
 
-export default configureStore;
+export default store;
