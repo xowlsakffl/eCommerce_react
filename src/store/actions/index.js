@@ -65,31 +65,33 @@ export const addToCart = (data, qty = 1, toast) =>
 }
 
 export const increaseCartQuantity = 
-    (data, toast, currentQuantity, setCurrentQuantity) =>
-    (dispatch, getState) => {
-        // Find the product
-        const { products } = getState().products;
-        
-        const getProduct = products.find(
-            (item) => item.productId === data.productId
-        );
+  (data, toast, currentQuantity, setCurrentQuantity) =>
+  (dispatch, getState) => {
+    const { products } = getState().products;
 
-        const isQuantityExist = getProduct.quantity >= currentQuantity + 1;
+    const getProduct = products.find(
+      (item) => item.productId === data.productId
+    );
 
-        if (isQuantityExist) {
-            const newQuantity = currentQuantity + 1;
-            setCurrentQuantity(newQuantity);
+    const isQuantityExist = getProduct.quantity >= currentQuantity + 1;
 
-            dispatch({
-                type: "ADD_CART",
-                payload: {...data, quantity: newQuantity + 1 },
-            });
-            localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
-        } else {
-            toast.error("품절되었습니다.");
-        }
+    if (isQuantityExist) {
+      const newQuantity = currentQuantity + 1;
+      setCurrentQuantity(newQuantity);
 
-    };
+      dispatch({
+        type: "ADD_CART",
+        payload: { ...data, quantity: newQuantity },
+      });
+
+      localStorage.setItem(
+        "cartItems",
+        JSON.stringify(getState().carts.cart)
+      );
+    } else {
+      toast.error("품절되었습니다.");
+    }
+  };
 
 export const decreaseCartQuantity = 
     (data, newQuantity) => (dispatch, getState) => {
