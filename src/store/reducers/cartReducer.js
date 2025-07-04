@@ -2,7 +2,7 @@ const initialState = {
     cart: [],
     totalPrice: 0,
     cartId: null,
-};
+}
 
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -12,11 +12,11 @@ export const cartReducer = (state = initialState, action) => {
                 (item) => item.productId === productToAdd.productId
             );
 
-            if(existingProduct){
+            if(existingProduct) {
                 const updatedCart = state.cart.map((item) => {
-                    if(item.productId === productToAdd.productId){
+                    if (item.productId === productToAdd.productId) {
                         return productToAdd;
-                    }else{
+                    } else {
                         return item;
                     }
                 });
@@ -24,8 +24,8 @@ export const cartReducer = (state = initialState, action) => {
                 return {
                     ...state,
                     cart: updatedCart,
-                }
-            }else{
+                };
+            } else {
                 const newCart = [...state.cart, productToAdd];
                 return {
                     ...state,
@@ -39,7 +39,17 @@ export const cartReducer = (state = initialState, action) => {
                     (item) => item.productId !== action.payload.productId
                 ),
             };
+        case "GET_USER_CART_PRODUCTS":
+            return {
+                ...state,
+                cart: action.payload,
+                totalPrice: action.totalPrice,
+                cartId: action.cartId,
+            };
+        case "CLEAR_CART":
+            return { cart:[], totalPrice: 0, cartId: null};
         default:
             return state;
     }
-};
+    return state;
+}

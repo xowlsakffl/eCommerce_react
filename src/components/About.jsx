@@ -29,7 +29,7 @@ const About = () => {
     ];
 
     return (
-        <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="max-w-7xl mx-auto px-6 py-8 font-notosans">
             <h1 className="text-slate-800 text-3xl font-bold text-center mb-12">
                 소개
             </h1>

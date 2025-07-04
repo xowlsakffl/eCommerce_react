@@ -10,11 +10,12 @@ const InputField = ({
     min,
     value,
     placeholder,
+    readOnly
 }) => {
     return (
         <div className="flex flex-col gap-1 w-full font-notosans">
             <label
-                htmlFor="id"
+                htmlFor={id}
                 className={`${
                     className ? className : ""
                 } font-semibold text-sm text-slate-800`}>
@@ -24,11 +25,12 @@ const InputField = ({
                 type={type}
                 id={id}
                 placeholder={placeholder}
-                className={`${
-                    className ? className : ""
-                } px-2 py-2 border outline-none bg-transparent text-slate-800 rounded-md ${
-                    errors[id]?.message ? "border-red-500" : "border-slate-700" 
-                }`}
+                className={`px-2 py-2 border outline-none text-slate-800 rounded-md
+                    ${readOnly ? "bg-gray-100" : "bg-transparent"} 
+                    ${errors[id]?.message ? "border-red-500" : "border-slate-700"} 
+                    ${className ? className : ""}
+                `}
+                readOnly={readOnly}
                 {...register(id, {
                     required: {value: required, message},
                     minLength: min

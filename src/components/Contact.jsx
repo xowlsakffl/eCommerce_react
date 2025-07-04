@@ -3,7 +3,7 @@ import { FaEnvelope, FaMapMarkedAlt, FaPhone } from "react-icons/fa";
 const Contact = () => {
     return(
         <div
-            className="flex flex-col items-center justify-center min-h-screen py-12 bg-cover bg-center"
+            className="flex flex-col items-center justify-center min-h-screen py-12 bg-cover bg-center font-notosans"
             style={{backgroundImage: "url('')"}}>
             
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
